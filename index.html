@@ -3,25 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>AbhiVerse vr.1.1.2</title>
+<title>AbhiVerse vr.1.1.4</title>
+<meta name="description" content="AbhiVerse — Abhinav Maurya's personal universe for projects, portfolio, experiments and online presence.">
+<meta name="theme-color" content="#F3EFFF">
+<meta property="og:title" content="AbhiVerse — My Digital World, All in One Place.">
+<meta property="og:description" content="A personal universe for my portfolio, projects, experiments, and online presence.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>try{var t=localStorage.getItem('abhiverse-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<noscript><style>#loader{display:none}body.loading{overflow:auto}</style></noscript>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   color-scheme: light;
-  --bg:#F3EFFF; --bg2:#E4DCFF; --ink:#1C1740; --mute:#5A5388; --card:rgba(255,255,255,.7); --line:rgba(28,23,64,.14); --star:60,50,130; --accent:#0F8F82;
+  --bg:#F3EFFF; --bg2:#E4DCFF; --ink:#1C1740; --mute:#5A5388; --card:rgba(255,255,255,.7); --line:rgba(28,23,64,.14); --star:60,50,130; --accent:var(--teal);
+  --teal:#0B7F74; --violet:#6D3FE0; --nova:#D98A06; --grad:linear-gradient(120deg,var(--teal),var(--violet));
+  --sky-a:#7DD3FC; --sky-b:#2563EB; --rose-a:#FFB199; --rose-b:#E2455B; --teal-a:#99F6E4; --violet-b:#7C3AED; --amber-a:#FDE68A; --amber-b:#F59E0B;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
-  --bg:#110D2B; --bg2:#1C1546; --ink:#EEEAFF; --mute:#A9A2D6; --card:rgba(30,24,72,.6); --line:rgba(238,234,255,.16); --star:238,234,255; --accent:#5EEAD4;
+  --bg:#110D2B; --bg2:#1C1546; --ink:#EEEAFF; --mute:#A9A2D6; --card:rgba(30,24,72,.6); --line:rgba(238,234,255,.16); --star:238,234,255; --accent:var(--teal); --teal:#5EEAD4; --violet:#A78BFA; --nova:#FBBF24;
 }
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
 body{margin:0;background:radial-gradient(1200px 700px at 80% -10%,var(--bg2),var(--bg));background-color:var(--bg);color:var(--ink);font-family:'Outfit',system-ui,sans-serif;font-weight:300;line-height:1.65;min-height:100vh;overflow-x:hidden}
 #stars{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 main,footer{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding-left:24px;padding-right:24px}
-.hero{padding-top:12vh;padding-bottom:56px}
+.hero{padding-top:72px;padding-bottom:56px}
 h1{font-family:'Unbounded',system-ui,sans-serif;font-weight:700;font-size:clamp(2.6rem,9vw,5.8rem);line-height:1;letter-spacing:-.03em;margin:0;display:flex;flex-wrap:wrap;align-items:flex-end;gap:14px}
 .ver{font-family:'Outfit',system-ui,sans-serif;font-size:clamp(.9rem,2vw,1.15rem);font-weight:500;letter-spacing:0;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:2px 14px;margin-bottom:.5em}
 .tag{font-family:'Unbounded',system-ui,sans-serif;font-weight:500;font-size:clamp(1.05rem,2.6vw,1.6rem);margin:28px 0 8px;max-width:22em;line-height:1.35}
@@ -45,6 +56,63 @@ footer a:hover{border-bottom-color:var(--accent);color:var(--accent)}
 .theme{position:absolute;z-index:5;top:calc(env(safe-area-inset-top,0px) + 14px);right:16px;font:500 .9rem 'Outfit',system-ui,sans-serif;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .theme:hover{border-color:var(--accent)}
 .theme:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.hero-card{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-template-rows:1fr auto;gap:40px 72px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:32px;padding:clamp(32px,5vw,72px);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);width:min(1680px,calc(100vw - 64px));min-height:calc(100vh - 150px);margin-left:50%;transform:translateX(-50%)}
+.hero-card .welcome{padding-left:72px;border-left:1px solid var(--line)}
+.hero-card h1{font-size:clamp(2.6rem,6.4vw,6rem)}
+.hero-card .tag{margin-top:28px;font-size:clamp(1.15rem,2.2vw,1.8rem);max-width:20em}
+.hero-card .sub{font-size:clamp(1.05rem,1.5vw,1.3rem)}
+.hero-card .avatar{width:clamp(110px,12vw,170px);height:clamp(110px,12vw,170px)}
+.hero-card .avatar .initials{font-size:clamp(2rem,4vw,3.2rem)}
+.hero-card .hello{font-size:clamp(1.05rem,1.6vw,1.4rem)}
+.hero-card .intro{font-size:clamp(1.05rem,1.4vw,1.25rem)}
+.hero-card .cta{grid-column:1/-1;margin-top:0;padding-top:36px;border-top:1px solid var(--line)}
+.hero-card .btn{padding:14px 30px;font-size:1.05rem}
+.welcome{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.avatar{position:relative;flex:0 0 auto;width:96px;height:96px;border-radius:50%;background:radial-gradient(circle at 30% 28%,#99F6E4,#7C3AED 75%);box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--accent),0 0 36px -6px #7C3AED;overflow:hidden;display:grid;place-items:center}
+.avatar .initials{font-family:'Unbounded',system-ui,sans-serif;font-weight:700;font-size:1.7rem;color:#fff}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hello{font-family:'Unbounded',system-ui,sans-serif;font-weight:500;font-size:1rem;color:var(--accent);margin:0 0 6px}
+.intro{margin:0;color:var(--mute);font-size:1.02rem}
+.intro strong{color:var(--ink);font-weight:500}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.btn.ghost:hover{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+html{scroll-behavior:smooth}
+/* ---- brand ---- */
+.logo{display:block;width:40px;height:40px;flex:0 0 auto}
+.brandmark{position:absolute;z-index:5;top:calc(env(safe-area-inset-top,0px) + 8px);left:16px;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:'Unbounded',system-ui,sans-serif;font-weight:500;font-size:.95rem}
+.brandmark:focus-visible{outline:3px solid var(--accent);outline-offset:4px;border-radius:12px}
+.verse{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.foot-brand{display:inline-flex;align-items:center;gap:12px}
+.foot-brand .logo{width:32px;height:32px}
+.hero-card .btn:not(.ghost){background:var(--grad);color:var(--bg)}
+.hero-card .btn:not(.ghost):hover{filter:brightness(1.08)}
+.card{transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--accent);transform:translateY(-4px)}
+/* orbit rings: the hero is a little solar system */
+.hero-card{position:relative;overflow:hidden}
+.hero-card>*{position:relative;z-index:1}
+.hero-card::before,.hero-card::after{content:"";position:absolute;border-radius:50%;pointer-events:none;border:1px solid var(--line)}
+.hero-card::before{width:min(56vw,820px);aspect-ratio:1;right:-14%;top:-38%;background:radial-gradient(circle at 50% 6px,var(--teal) 0 5px,transparent 6px)}
+.hero-card::after{width:min(34vw,520px);aspect-ratio:1;left:-9%;bottom:-34%;background:radial-gradient(circle at 50% 6px,var(--violet) 0 4px,transparent 5px)}
+/* ---- loader ---- */
+body.loading{overflow:hidden}
+#loader{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:radial-gradient(900px 600px at 50% 40%,var(--bg2),var(--bg));background-color:var(--bg);transition:opacity .7s ease,visibility .7s}
+#loader.done{opacity:0;visibility:hidden;pointer-events:none}
+.ld-inner{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;padding:24px}
+.ld-logo{width:128px;height:128px;overflow:visible}
+.ld-word{font-family:'Unbounded',system-ui,sans-serif;font-weight:700;font-size:clamp(1.6rem,5vw,2.2rem);letter-spacing:-.03em;line-height:1.1}
+.ld-sub{color:var(--mute);font-size:.95rem;letter-spacing:.08em}
+.ld-bar{width:168px;height:3px;border-radius:3px;background:var(--line);overflow:hidden}
+.ld-bar i{display:block;height:100%;background:var(--grad);border-radius:3px;transform-origin:left}
+.ld-planet{transform-box:fill-box;transform-origin:center}
+.ld-ring{stroke-dasharray:1}
+.contact{flex:1 1 100%;max-width:44em}
+.contact h2{margin:0 0 12px}
+.contact p{margin:0 0 18px;color:var(--mute);font-size:1rem}
+footer .contact nav{gap:12px}
+footer .contact a.btn{color:var(--bg);border-bottom:0;font-weight:500}
+footer .contact a.btn:hover{color:var(--bg);background:var(--accent)}
 .about{flex:1 1 100%;max-width:44em}
 .about h2{margin:0 0 12px}
 .about p{margin:0;color:var(--mute);font-size:1rem}
@@ -53,28 +121,102 @@ footer a:hover{border-bottom-color:var(--accent);color:var(--accent)}
   .hero{padding-top:14vh;padding-bottom:36px}
   .card{padding:22px}
   .btn{align-self:stretch;text-align:center}
+  .hero-card{grid-template-columns:1fr;grid-template-rows:auto;padding:24px;gap:24px;width:calc(100vw - 36px);min-height:0}
+  .hero-card .welcome{padding-left:0;border-left:0;padding-top:24px;border-top:1px solid var(--line)}
+  .hero-card .cta{padding-top:24px}
+  .cta .btn{flex:1 1 100%}
   footer{flex-direction:column;align-items:flex-start;margin-top:56px}
   .theme{right:12px;padding:7px 13px}
+  .brandmark{left:12px;gap:8px;font-size:.85rem}
+  .brandmark .logo{width:34px;height:34px}
 }
 @media (prefers-reduced-motion:no-preference){
-  h1{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+  body:not(.loading) .brand{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+  body:not(.loading) .welcome{animation:rise .9s .15s cubic-bezier(.2,.7,.2,1) both}
   @keyframes rise{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:none}}
+  .hero-card::before{animation:spin 90s linear infinite}
+  .hero-card::after{animation:spin 70s linear infinite reverse}
+  .planet{animation:float 7s ease-in-out infinite}
+  .grid .card:nth-child(2) .planet{animation-delay:-1.8s}
+  .grid .card:nth-child(3) .planet{animation-delay:-3.6s}
+  .grid .card:nth-child(4) .planet{animation-delay:-5.4s}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes float{50%{transform:translateY(-6px)}}
+  .ld-ring{animation:draw 1.1s ease both}
+  .ld-planet{animation:pop .9s cubic-bezier(.2,.9,.3,1.2) both,pulse 2.4s 1s ease-in-out infinite}
+  .ld-word{animation:rise .8s .25s both}
+  .ld-sub{animation:rise .8s .45s both}
+  .ld-bar i{animation:load 1.5s ease-in-out both}
+  @keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+  @keyframes pop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+  @keyframes pulse{50%{transform:scale(1.05)}}
+  @keyframes load{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 }
 </style>
 </head>
-<body>
+<body class="loading">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gPlanet" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38D9C3"/><stop offset="1" stop-color="#9B7BF7"/></linearGradient>
+    <linearGradient id="gRing" gradientUnits="userSpaceOnUse" x1="3" y1="0" x2="61" y2="0"><stop offset="0" stop-color="#8B5CF6"/><stop offset="1" stop-color="#2DD4BF"/></linearGradient>
+  </defs>
+  <symbol id="logo" viewBox="0 0 64 64">
+    <g transform="rotate(-18 32 32)"><path d="M3 32A29 9 0 0 1 61 32" fill="none" stroke="url(#gRing)" stroke-width="2.6" stroke-linecap="round" opacity=".55"/></g>
+    <circle cx="32" cy="32" r="17" fill="url(#gPlanet)"/>
+    <path d="M25 41 32 23 39 41M27.6 35.5h8.8" fill="none" stroke="#0F0A2A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <g transform="rotate(-18 32 32)"><path d="M3 32A29 9 0 0 0 61 32" fill="none" stroke="url(#gRing)" stroke-width="2.6" stroke-linecap="round"/><circle cx="48.6" cy="39.4" r="3.4" fill="#FBBF24"/></g>
+  </symbol>
+</svg>
+
+<div id="loader" role="status" aria-label="Loading AbhiVerse">
+  <div class="ld-inner">
+    <svg class="ld-logo" viewBox="0 0 64 64" aria-hidden="true">
+      <g transform="rotate(-18 32 32)"><path class="ld-ring" pathLength="1" d="M3 32A29 9 0 0 1 61 32" fill="none" stroke="url(#gRing)" stroke-width="2.6" stroke-linecap="round" opacity=".55"/></g>
+      <g class="ld-planet">
+        <circle cx="32" cy="32" r="17" fill="url(#gPlanet)"/>
+        <path d="M25 41 32 23 39 41M27.6 35.5h8.8" fill="none" stroke="#0F0A2A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g transform="rotate(-18 32 32)">
+        <path class="ld-ring" pathLength="1" d="M3 32A29 9 0 0 0 61 32" fill="none" stroke="url(#gRing)" stroke-width="2.6" stroke-linecap="round"/>
+        <circle r="3.4" fill="#FBBF24"><animateMotion dur="2.2s" repeatCount="indefinite" path="M3 32A29 9 0 1 1 61 32A29 9 0 1 1 3 32"/></circle>
+      </g>
+    </svg>
+    <div class="ld-word">Abhi<span class="verse">Verse</span></div>
+    <div class="ld-sub">Entering the universe…</div>
+    <div class="ld-bar"><i></i></div>
+  </div>
+</div>
+
 <canvas id="stars" aria-hidden="true"></canvas>
 <button class="theme" id="theme" type="button">🌙 Night</button>
+<a class="brandmark" href="#" aria-label="AbhiVerse — back to top"><svg class="logo" aria-hidden="true"><use href="#logo"/></svg><span>Abhi<span class="verse">Verse</span></span></a>
 <main>
   <section class="hero">
-    <h1>AbhiVerse <span class="ver">vr.1.1.2</span></h1>
-    <p class="tag">My Digital World, All in One Place.</p>
-    <p class="sub">A personal universe for my portfolio, projects, experiments, and online presence.</p>
+    <div class="hero-card">
+      <div class="brand">
+        <h1><span>Abhi<span class="verse">Verse</span></span> <span class="ver">vr.1.1.4</span></h1>
+        <p class="tag">My Digital World, All in One Place.</p>
+        <p class="sub">A personal universe for my portfolio, projects, experiments, and online presence.</p>
+      </div>
+      <div class="welcome">
+        <div class="avatar">
+          <span class="initials">AM</span>
+          <img src="avatar.jpg" alt="Portrait of Abhinav Maurya" onerror="this.remove()">
+        </div>
+        <p class="hello">👋 Welcome to my universe</p>
+        <p class="intro">Hi, I'm <strong>Abhinav Maurya</strong> — a Java Full Stack Developer who loves turning ideas into useful, polished web experiences. Take a look around, explore my worlds, and say hello.</p>
+      </div>
+      <div class="cta">
+        <a class="btn" href="#projects">Explore Projects</a>
+        <a class="btn ghost" href="https://abhinavmaurya12.github.io/portfolio/" target="_blank" rel="noopener">My Portfolio ↗</a>
+        <a class="btn ghost" href="#contact">Contact Me</a>
+      </div>
+    </div>
   </section>
 
-  <h2>Explore the worlds</h2>
+  <h2 id="projects">Explore the worlds</h2>
   <section class="grid">
-    <article class="card" style="--c1:#7DD3FC;--c2:#2563EB">
+    <article class="card" style="--c1:var(--sky-a);--c2:var(--sky-b)">
       <div class="planet"></div>
       <h3>LinkForge</h3>
       <p class="hook">All My Projects. One Destination. 🚀</p>
@@ -83,7 +225,7 @@ footer a:hover{border-bottom-color:var(--accent);color:var(--accent)}
       <a class="btn" href="https://abhinavmaurya12.github.io/LinkForge/" target="_blank" rel="noopener">Visit LinkForge ↗</a>
     </article>
 
-    <article class="card" style="--c1:#FFB199;--c2:#E2455B">
+    <article class="card" style="--c1:var(--rose-a);--c2:var(--rose-b)">
       <div class="planet"></div>
       <h3>🚀 ReplicaX</h3>
       <p class="hook">One Platform. Multiple Website Replicas.</p>
@@ -92,7 +234,7 @@ footer a:hover{border-bottom-color:var(--accent);color:var(--accent)}
       <a class="btn" href="https://abhinavmaurya12.github.io/ReplicaX/" target="_blank" rel="noopener">Visit ReplicaX ↗</a>
     </article>
 
-    <article class="card" style="--c1:#99F6E4;--c2:#7C3AED">
+    <article class="card" style="--c1:var(--teal-a);--c2:var(--violet-b)">
       <div class="planet"></div>
       <h3>👨‍💻 Abhinav Maurya — Portfolio</h3>
       <p class="hook">Java Full Stack Developer | Web Developer | Problem Solver 🚀</p>
@@ -101,7 +243,7 @@ footer a:hover{border-bottom-color:var(--accent);color:var(--accent)}
       <a class="btn" href="https://abhinavmaurya12.github.io/portfolio/" target="_blank" rel="noopener">Visit Portfolio ↗</a>
     </article>
 
-    <article class="card" style="--c1:#FDE68A;--c2:#F59E0B">
+    <article class="card" style="--c1:var(--amber-a);--c2:var(--amber-b)">
       <div class="planet"></div>
       <h3>🐙 GitHub</h3>
       <p class="hook">Where My Code Lives. 💻</p>
@@ -112,17 +254,21 @@ footer a:hover{border-bottom-color:var(--accent);color:var(--accent)}
   </section>
 </main>
 
-<footer>
+<footer id="contact">
   <section class="about" id="about">
     <h2>About me</h2>
     <p>I’m Abhinav Maurya, a Java Full Stack Developer, web developer and problem solver. I enjoy building useful and engaging digital experiences, and AbhiVerse is where my live projects, experiments and online presence come together in one place.</p>
   </section>
-  <span>© <span id="yr">2026</span> AbhiVerse vr.1.1.2 · Abhinav Maurya</span>
-  <nav aria-label="Social links">
-    <a href="https://github.com/abhinavmaurya12" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://www.instagram.com/_abhinav_830_" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://www.linkedin.com/in/abhinavmaurya1/" target="_blank" rel="noopener">LinkedIn</a>
-  </nav>
+  <section class="contact">
+    <h2>Contact me</h2>
+    <p>Want to collaborate, ask something or just say hi? Reach out on any of these:</p>
+    <nav aria-label="Social links">
+      <a class="btn" href="https://github.com/abhinavmaurya12" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn" href="https://www.instagram.com/_abhinav_830_" target="_blank" rel="noopener">Instagram ↗</a>
+      <a class="btn" href="https://www.linkedin.com/in/abhinavmaurya1/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </nav>
+  </section>
+  <span class="foot-brand"><svg class="logo" aria-hidden="true"><use href="#logo"/></svg><span>© <span id="yr">2026</span> AbhiVerse vr.1.1.4 · Abhinav Maurya</span></span>
 </footer>
 
 <script>
@@ -133,6 +279,8 @@ footer a:hover{border-bottom-color:var(--accent);color:var(--accent)}
     root.setAttribute('data-theme', t);
     tb.textContent = t === 'dark' ? '☀️ Day' : '🌙 Night';
     tb.setAttribute('aria-label', 'Switch to ' + (t === 'dark' ? 'day' : 'night') + ' mode');
+    var m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.setAttribute('content', t === 'dark' ? '#110D2B' : '#F3EFFF');
   }
   var saved = 'light';
   try { saved = localStorage.getItem('abhiverse-theme') || 'light'; } catch(e) {}
@@ -163,6 +311,21 @@ footer a:hover{border-bottom-color:var(--accent);color:var(--accent)}
   }
   addEventListener('resize', function(){ size(); if (still) draw(); });
   size(); draw();
+
+  // branded loader: show the logo animation for a moment, then reveal the universe
+  var ld = document.getElementById('loader'), t0 = Date.now(), gone = false;
+  function hideLoader(){
+    if (gone || !ld) return;
+    gone = true;
+    ld.classList.add('done');
+    document.body.classList.remove('loading');
+    setTimeout(function(){ ld.remove(); }, 900);
+  }
+  function ready(){
+    setTimeout(hideLoader, Math.max(0, (still ? 150 : 1600) - (Date.now() - t0)));
+  }
+  if (document.readyState === 'complete') ready(); else addEventListener('load', ready);
+  setTimeout(hideLoader, 5000);
 })();
 </script>
 </body>
