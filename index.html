@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AbhiVerse vr.1.1.2</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#F3EFFF; --bg2:#E4DCFF; --ink:#1C1740; --mute:#5A5388; --card:rgba(255,255,255,.7); --line:rgba(28,23,64,.14); --star:60,50,130; --accent:#0F8F82;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#110D2B; --bg2:#1C1546; --ink:#EEEAFF; --mute:#A9A2D6; --card:rgba(30,24,72,.6); --line:rgba(238,234,255,.16); --star:238,234,255; --accent:#5EEAD4;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(1200px 700px at 80% -10%,var(--bg2),var(--bg));background-color:var(--bg);color:var(--ink);font-family:'Outfit',system-ui,sans-serif;font-weight:300;line-height:1.65;min-height:100vh;overflow-x:hidden}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main,footer{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding-left:24px;padding-right:24px}
+.hero{padding-top:12vh;padding-bottom:56px}
+h1{font-family:'Unbounded',system-ui,sans-serif;font-weight:700;font-size:clamp(2.6rem,9vw,5.8rem);line-height:1;letter-spacing:-.03em;margin:0;display:flex;flex-wrap:wrap;align-items:flex-end;gap:14px}
+.ver{font-family:'Outfit',system-ui,sans-serif;font-size:clamp(.9rem,2vw,1.15rem);font-weight:500;letter-spacing:0;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:2px 14px;margin-bottom:.5em}
+.tag{font-family:'Unbounded',system-ui,sans-serif;font-weight:500;font-size:clamp(1.05rem,2.6vw,1.6rem);margin:28px 0 8px;max-width:22em;line-height:1.35}
+.sub{color:var(--mute);font-size:1.1rem;max-width:34em;margin:0}
+h2{font-family:'Unbounded',system-ui,sans-serif;font-weight:500;font-size:1.2rem;margin:40px 0 24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:24px;align-items:stretch}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;display:flex;flex-direction:column;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.planet{width:64px;height:64px;border-radius:50%;margin-bottom:22px;background:radial-gradient(circle at 30% 28%,var(--c1),var(--c2) 70%);position:relative;box-shadow:0 0 32px -6px var(--c2)}
+.planet::after{content:"";position:absolute;left:-18px;right:-18px;top:50%;height:14px;margin-top:-7px;border:2px solid var(--c1);border-radius:50%;transform:rotate(-18deg);opacity:.8;border-left-color:transparent;border-right-color:transparent}
+.card h3{font-family:'Unbounded',system-ui,sans-serif;font-weight:500;font-size:1.35rem;margin:0 0 4px}
+.hook{font-weight:500;margin:0 0 14px}
+.card p.desc{color:var(--mute);margin:0 0 22px;font-size:.98rem}
+.url{font-size:.82rem;color:var(--mute);word-break:break-all;margin:auto 0 14px}
+.btn{display:inline-block;align-self:flex-start;text-decoration:none;font-weight:500;color:var(--bg);background:var(--ink);padding:10px 20px;border-radius:999px;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-2px);background:var(--accent)}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+footer{margin-top:80px;padding-top:28px;padding-bottom:36px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between;align-items:center;color:var(--mute);font-size:.92rem}
+footer nav{display:flex;gap:22px;flex-wrap:wrap}
+footer a{color:var(--ink);text-decoration:none;font-weight:500;border-bottom:1px solid var(--line)}
+footer a:hover{border-bottom-color:var(--accent);color:var(--accent)}
+.theme{position:absolute;z-index:5;top:calc(env(safe-area-inset-top,0px) + 14px);right:16px;font:500 .9rem 'Outfit',system-ui,sans-serif;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.theme:hover{border-color:var(--accent)}
+.theme:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.about{flex:1 1 100%;max-width:44em}
+.about h2{margin:0 0 12px}
+.about p{margin:0;color:var(--mute);font-size:1rem}
+@media (max-width:600px){
+  main,footer{padding-left:18px;padding-right:18px}
+  .hero{padding-top:14vh;padding-bottom:36px}
+  .card{padding:22px}
+  .btn{align-self:stretch;text-align:center}
+  footer{flex-direction:column;align-items:flex-start;margin-top:56px}
+  .theme{right:12px;padding:7px 13px}
+}
+@media (prefers-reduced-motion:no-preference){
+  h1{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes rise{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<button class="theme" id="theme" type="button">🌙 Night</button>
+<main>
+  <section class="hero">
+    <h1>AbhiVerse <span class="ver">vr.1.1.2</span></h1>
+    <p class="tag">My Digital World, All in One Place.</p>
+    <p class="sub">A personal universe for my portfolio, projects, experiments, and online presence.</p>
+  </section>
+
+  <h2>Explore the worlds</h2>
+  <section class="grid">
+    <article class="card" style="--c1:#7DD3FC;--c2:#2563EB">
+      <div class="planet"></div>
+      <h3>LinkForge</h3>
+      <p class="hook">All My Projects. One Destination. 🚀</p>
+      <p class="desc">LinkForge is a centralized showcase for my live websites and web development projects. It brings all my deployed projects together in one place, allowing visitors to explore my work and access live demos without searching through multiple repositories.</p>
+      <div class="url">abhinavmaurya12.github.io/LinkForge/</div>
+      <a class="btn" href="https://abhinavmaurya12.github.io/LinkForge/" target="_blank" rel="noopener">Visit LinkForge ↗</a>
+    </article>
+
+    <article class="card" style="--c1:#FFB199;--c2:#E2455B">
+      <div class="planet"></div>
+      <h3>🚀 ReplicaX</h3>
+      <p class="hook">One Platform. Multiple Website Replicas.</p>
+      <p class="desc">ReplicaX is a web development project dedicated to recreating and exploring popular website designs through frontend development. It serves as a growing collection of website replicas built to practice UI/UX design, responsive layouts, and modern web development techniques.</p>
+      <div class="url">abhinavmaurya12.github.io/ReplicaX/</div>
+      <a class="btn" href="https://abhinavmaurya12.github.io/ReplicaX/" target="_blank" rel="noopener">Visit ReplicaX ↗</a>
+    </article>
+
+    <article class="card" style="--c1:#99F6E4;--c2:#7C3AED">
+      <div class="planet"></div>
+      <h3>👨‍💻 Abhinav Maurya — Portfolio</h3>
+      <p class="hook">Java Full Stack Developer | Web Developer | Problem Solver 🚀</p>
+      <p class="desc">Welcome to my personal portfolio repository! This project showcases my development journey, technical skills, projects, and passion for building useful and engaging digital experiences.</p>
+      <div class="url">abhinavmaurya12.github.io/portfolio/</div>
+      <a class="btn" href="https://abhinavmaurya12.github.io/portfolio/" target="_blank" rel="noopener">Visit Portfolio ↗</a>
+    </article>
+
+    <article class="card" style="--c1:#FDE68A;--c2:#F59E0B">
+      <div class="planet"></div>
+      <h3>🐙 GitHub</h3>
+      <p class="hook">Where My Code Lives. 💻</p>
+      <p class="desc">My GitHub profile is home to the source code behind my projects, including LinkForge, ReplicaX and my portfolio. Browse the repositories to see how each project is built and follow my progress as I keep learning and building.</p>
+      <div class="url">github.com/abhinavmaurya12</div>
+      <a class="btn" href="https://github.com/abhinavmaurya12" target="_blank" rel="noopener">Visit GitHub ↗</a>
+    </article>
+  </section>
+</main>
+
+<footer>
+  <section class="about" id="about">
+    <h2>About me</h2>
+    <p>I’m Abhinav Maurya, a Java Full Stack Developer, web developer and problem solver. I enjoy building useful and engaging digital experiences, and AbhiVerse is where my live projects, experiments and online presence come together in one place.</p>
+  </section>
+  <span>© <span id="yr">2026</span> AbhiVerse vr.1.1.2 · Abhinav Maurya</span>
+  <nav aria-label="Social links">
+    <a href="https://github.com/abhinavmaurya12" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.instagram.com/_abhinav_830_" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/in/abhinavmaurya1/" target="_blank" rel="noopener">LinkedIn</a>
+  </nav>
+</footer>
+
+<script>
+(function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var root = document.documentElement, tb = document.getElementById('theme');
+  function setTheme(t){
+    root.setAttribute('data-theme', t);
+    tb.textContent = t === 'dark' ? '☀️ Day' : '🌙 Night';
+    tb.setAttribute('aria-label', 'Switch to ' + (t === 'dark' ? 'day' : 'night') + ' mode');
+  }
+  var saved = 'light';
+  try { saved = localStorage.getItem('abhiverse-theme') || 'light'; } catch(e) {}
+  setTheme(saved);
+  tb.addEventListener('click', function(){
+    var n = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    setTheme(n);
+    try { localStorage.setItem('abhiverse-theme', n); } catch(e) {}
+    if (still) draw();
+  });
+  var c = document.getElementById('stars'), x = c.getContext('2d'), stars = [], w, h;
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size(){
+    w = c.width = innerWidth; h = c.height = innerHeight;
+    stars = [];
+    for (var i = 0; i < Math.min(140, w*h/9000); i++)
+      stars.push({x:Math.random()*w, y:Math.random()*h, r:Math.random()*1.4+.3, p:Math.random()*6.28, s:Math.random()*.02+.005});
+  }
+  function draw(){
+    var rgb = getComputedStyle(document.documentElement).getPropertyValue('--star').trim() || '238,234,255';
+    x.clearRect(0,0,w,h);
+    stars.forEach(function(s){
+      s.p += s.s;
+      x.fillStyle = 'rgba('+rgb+','+(still ? .6 : .35+.45*Math.abs(Math.sin(s.p)))+')';
+      x.beginPath(); x.arc(s.x,s.y,s.r,0,6.283); x.fill();
+    });
+    if (!still) requestAnimationFrame(draw);
+  }
+  addEventListener('resize', function(){ size(); if (still) draw(); });
+  size(); draw();
+})();
+</script>
+</body>
+</html>
